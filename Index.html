@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Big Small Game</title>
+<style>
+body {
+  background: #080d18;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  padding: 20px;
+}
+.card {
+  background: #121c2d;
+  padding: 25px;
+  border-radius: 18px;
+  margin-top: 25px;
+}
+h1 { color: #58eaff; }
+button {
+  padding: 16px;
+  margin: 8px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: bold;
+  background: #58eaff;
+  color: #080d18;
+}
+#number {
+  font-size: 65px;
+  margin: 20px;
+}
+</style>
+</head>
+<body>
+<h1>BIG SMALL</h1>
+<div class="card">
+  <p>Practice Points</p>
+  <h2 id="points">1000</h2>
+  <div id="number">?</div>
+  <button onclick="play('Small')">SMALL (0-4)</button>
+  <button onclick="play('Big')">BIG (5-9)</button>
+  <p id="result">Choose Big or Small</p>
+</div>
+<script>
+let points = 1000;
+
+function play(choice) {
+  let n = Math.floor(Math.random() * 10);
+  let answer = n < 5 ? "Small" : "Big";
+  document.getElementById("number").textContent = n;
+
+  if (choice === answer) {
+    points += 10;
+    document.getElementById("result").textContent =
+      "Correct! +10 points";
+  } else {
+    points = Math.max(0, points - 10);
+    document.getElementById("result").textContent =
+      "Wrong! -10 points";
+  }
+
+  document.getElementById("points").textContent = points;
+}
+</script>
+</body>
+</html>
